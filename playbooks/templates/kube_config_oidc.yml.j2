@@ -24,6 +24,12 @@ users:
             - --oidc-issuer-url={{ kube_oidc_url }}
             - --oidc-client-id={{ kube_oidc_client_id }}
             - --oidc-client-secret={{ kube_oidc_client_secret }}
+{%   if kube_oidc_username_claim is defined %}
+            - --oidc-extra-scope={{ kube_oidc_username_claim }}
+{%   endif %}
+{%   if kube_oidc_groups_claim is defined %}
+            - --oidc-extra-scope={{ kube_oidc_groups_claim }}
+{%   endif %}
 {% for scope in kube_oidc_extra_scopes %}
             - --oidc-extra-scope={{ scope }}
 {% endfor %}
