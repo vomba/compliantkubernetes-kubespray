@@ -32,7 +32,7 @@
 
     Change the values in `<>` based on the details of the cluster.
 
-1. For service clusters that is using dex as OIDC client it is recommended to switch to your IDP if dex is installed in the service cluster. This allows the sc kubeconfig to work even if dex is down. To do that, change the following variables in `sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` to use the values from your IDP. If dex was installed via compliantkuberentes-apps, then you can find the needed IDP config in `secrets.yaml`.
+1. For service clusters that is using dex as OIDC client it is recommended to switch to your IDP, for example Google. This allows the sc kubeconfig to work even if dex is down. To do that, change the following variables in `sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` to use the values from your IDP. If dex was installed via compliantkuberentes-apps, then you can find the needed config for the IDP in `secrets.yaml`.
 
     ```yaml
     kube_oidc_url: <IDP-URL>

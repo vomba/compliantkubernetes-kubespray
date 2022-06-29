@@ -101,6 +101,13 @@ This will use the inventory, group-vars, and ssh key in your config path and the
 
 ## Kubeconfig
 
-We recommend that you use OIDC kubeconfigs instead of regular cluster-admin kubeconfigs. The default settings will create OIDC kubeconfigs for you, but there are some variables you need to set. See the variables in: `<prefix>-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` in your config path.
+We recommend that you use OIDC kubeconfigs instead of regular cluster-admin kubeconfigs. The default settings will create OIDC kubeconfigs for you when you run `./bin/ck8s-kubespray apply <prefix>`, but there are some variables you need to set. See the variables in: `<prefix>-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` in your config path.
 
 But if you need to use a regular cluster-admin kubeconfig in a break-glass situation, then you can ssh to one of the controleplane nodes and use the kubeconfig at `/etc/kubernetes/admin.conf`.
+
+The kubeconfig and OIDC cluster admin RBAC are managed with the playbooks `playbooks/kubeconfig.yml` and `playbooks/cluster_admin_rbac.yml`. You can run them manually with:
+
+```bash
+./bin/ck8s-kubespray run-playbook <prefix> ../playbooks/kubeconfig.yml -b
+./bin/ck8s-kubespray run-playbook <prefix> ../playbooks/cluster_admin_rbac.yml -b
+```
