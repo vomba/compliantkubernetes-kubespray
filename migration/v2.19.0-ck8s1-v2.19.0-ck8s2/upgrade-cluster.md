@@ -40,7 +40,7 @@
     kube_oidc_client_secret: <secret-from-IDP>
     ```
 
-    Then update the apiserver by running: `./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --limit "kube_control_plane"`
+    Then update the apiserver by running: `./bin/ck8s-kubespray run-playbook sc upgrade-cluster.yml -b --limit "kube_control_plane" --tags "download,master"`
 
 1. Create the new OIDC kubeconfigs by running: `./bin/ck8s-kubespray run-playbook sc ../playbooks/kubeconfig.yml -b` and `./bin/ck8s-kubespray run-playbook wc ../playbooks/kubeconfig.yml -b`. NOTE: this will overwrite any existing file at `kubeconfig_file_name` in `artifacts_dir`.
 
