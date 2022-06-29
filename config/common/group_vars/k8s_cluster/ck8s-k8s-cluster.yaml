@@ -14,6 +14,7 @@ cluster_admin_users:
 - test@example.com
 cluster_admin_groups:
 - admin-group
+kubeconfig_localhost: false
 
 etcd_version: v3.5.3
 etcd_binary_checksums:
