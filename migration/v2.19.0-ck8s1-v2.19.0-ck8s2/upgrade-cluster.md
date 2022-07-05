@@ -30,12 +30,12 @@
     - kubeconfig_localhost: true
     ```
 
-    Change the values in `<>` based on the details of the cluster.
+    Change the values in `<>` based on the details of the cluster. In general the service cluster should use IDP (google) and workload cluster should use dex. The `secret-from-dex` can be found in `secrets.yaml` from compliantkubernetes-apps under the key `dex.kubeloginClientSecret`.
 
 1. For service clusters that is using dex as OIDC client it is recommended to switch to your IDP, for example Google. This allows the sc kubeconfig to work even if dex is down. To do that, change the following variables in `sc-config/group_vars/k8s_cluster/ck8s-k8s-cluster.yaml` to use the values from your IDP. If dex was installed via compliantkuberentes-apps, then you can find the needed config for the IDP in `secrets.yaml`.
 
     ```yaml
-    kube_oidc_url: <IDP-URL>
+    kube_oidc_url: <IDP-URL> #e.g. https://accounts.google.com/
     kube_oidc_client_id: <id-from-IDP>
     kube_oidc_client_secret: <secret-from-IDP>
     ```
